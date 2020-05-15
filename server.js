@@ -118,8 +118,6 @@ router.route('/discussions')
         }
         else
         {
-
-
             var discussion = new Discussion();
             discussion.admin = req.body.admin;
             discussion.topic = req.body.topic;
@@ -145,6 +143,35 @@ router.route('/discussions')
             })
         }
     })
+    .get(authJwtController.isAuthenticated, function(req,res) {
+        Discussion.aggregate([
+            {
+                $lookup: {
+                    from: 'comment',
+                    localField: 'topic',
+                    foreignField: 'topic',
+                    as: 'comments'
+                }
+            },
+            {
+                $project: {
+                    topic: 1,
+                    description: 2,
+                    admin: 3,
+                    comments: '$comments'
+                }
+            },
+            {
+                $sort: {
+                    topic: -1
+                }
+            }
+        ]).exec(function (err, discussion) {
+            if (err) res.send(err);
+            res.status(200).json({success: true, discussion: discussion});
+        })
+    })
+
 
 // comment routes
 router.route('/comment')
@@ -173,7 +200,7 @@ router.route('/comment')
                     comment.topic = req.body.topic;
                     comment.time = req.body.time;
 
-                    discussion.save(function (err)
+                    comment.save(function (err)
                     {
                         if (err) res.send(err);
                         else
