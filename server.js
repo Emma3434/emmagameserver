@@ -100,8 +100,62 @@ router.post('/signin', function(req, res) {
     });
 });
 
+// discussion (single) routes
+router.route('/discussions/:discussionId')
+    .get(authJwtController.isAuthenticated, function (req, res) {
+        var id = req.params.discussionId;
+        Discussion.findById(id, function(err, discussion) {
+            if (err) res.send(err);
+            if (!discussion)
+            {
+                res.json({success: false, message:"Cannot find the discussion."});
+            }
+            else
+            {
+                Discussion.aggregate([
+                    {
+                        $lookup: {
+                            from: 'comments',
+                            localField: 'topic',
+                            foreignField: 'topic',
+                            as: 'comments'
+                        }
+                    },
+                    {
+                        $project: {
+                            topic: 1,
+                            description: 2,
+                            admin: 3,
+                            comments: '$comments'
+                        }
+                    }
+                ]).exec(function (err, disscussionIdReview) {
+                    if (err) res.send(err);
+                    res.status(200).json({success: true, discussion: disscussionIdReview});
+                })
 
-// discussion routes
+            }
+        });
+    })
+
+    .put(authJwtController.isAuthenticated, function (req, res){
+        var id = req.params.discussionID;
+        Discussion.findById(id, function(err, discussion){
+            if (err) res.send(err);
+            var discussionJSON = JSON.stringify(discussion);
+            discussion.save(function(err){
+                if(err){
+                    return res.send(err);
+                }
+                else
+                {
+                    res.json({success: true, message:"Successfully updated movie", discussion: discussion})
+                }
+            })
+        })
+    })
+
+// discussions routes
 router.route('/discussions')
     .post(authJwtController.isAuthenticated, function(req,res) {
         if (!req.body.admin)
@@ -143,6 +197,8 @@ router.route('/discussions')
             })
         }
     })
+
+    // get all of the discussions
     .get(authJwtController.isAuthenticated, function(req,res) {
         Discussion.aggregate([
             {
@@ -169,6 +225,23 @@ router.route('/discussions')
         ]).exec(function (err, discussion) {
             if (err) res.send(err);
             res.status(200).json({success: true, discussion: discussion});
+        })
+    })
+    .delete(authJwtController.isAuthenticated, function(req,res)
+    {
+        Discussion.deleteOne({topic: req.body.topic}, function (err, discussion){
+            if (err)
+            {
+                res.send(err);
+            }
+            else if (!discussion)
+            {
+                res.status(400).json({success: false, message: 'Cannot find this discussion.'})
+            }
+            else
+            {
+                res.status(200).json({success: true, message: 'Successfully deleted the discussion.'})
+            }
         })
     })
 
