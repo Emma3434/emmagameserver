@@ -131,7 +131,7 @@ router.route('/discussions/:discussionId')
                     }
                 ]).exec(function (err, disscussionIdReview) {
                     if (err) res.send(err);
-                    res.status(200).json({success: true, discussion: disscussionIdReview});
+                    res.status(200).json({success: true, id: disscussionId, discussion: disscussionIdReview});
                 })
 
             }
