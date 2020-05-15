@@ -157,7 +157,7 @@ router.route('/comment')
         {
             res.status(400).json({success: false, message: "Please choose the topic you want to discuss."})
         }
-        else if (!req.body.comment)
+        else if (!req.body.message)
         {
             res.status(400).json({success: false, message: "The comment cannot be empty."})
         }
@@ -169,7 +169,7 @@ router.route('/comment')
                 if (discussion){
                     var comment = new Comment();
                     comment.username = req.body.username;
-                    comment.message = req.body.comment;
+                    comment.message = req.body.message;
                     comment.topic = req.body.topic;
                     comment.time = req.body.time;
 
