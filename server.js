@@ -101,9 +101,9 @@ router.post('/signin', function(req, res) {
 });
 
 // discussion (single) routes
-router.route('/discussions/:discussionId')
+router.route('/discussions/:topic')
     .get(authJwtController.isAuthenticated, function (req, res) {
-        Discussion.findById({_id: req.params.discussionId}, function(err, discussion) {
+        Discussion.findById({_id: req.params.topic}, function(err, discussion) {
             if (err) res.send(err);
             if (!discussion)
             {
@@ -115,7 +115,7 @@ router.route('/discussions/:discussionId')
                     {
                         $match:
                             {
-                                id: req.params.discussionId
+                                title: req.params.topic
                             }
                     },
                     {
