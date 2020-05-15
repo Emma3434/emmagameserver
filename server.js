@@ -8,8 +8,7 @@ var cors = require('cors');
 
 var User = require('./Users');
 var Movie = require('./Movies');
-var Review = require('./Reviews');
-
+var Discussion = require('./Discussions');
 
 var app = express();
 module.exports = app; // for testing
@@ -99,6 +98,42 @@ router.post('/signin', function(req, res) {
 
     });
 });
+
+// discussion routes
+router.route('/discussions')
+    .post(authJwtController.isAuthenticated, function(req,res) {
+        if (!req.body.username)
+        {
+            res.status(400).json({success: false, message: "Please login to join the discussion."})
+        }
+        else if (!req.body.topic)
+        {
+            res.status(400).json({success: false, message: "Please choose the topic you want to discuss."})
+        }
+        else if (!req.body.comment)
+        {
+            res.status(400).json({success: false, message: "The comment cannot be empty."})
+        }
+        else
+        {
+            var discussion = new Discussion();
+            discussion.username = req.body.username;
+            discussion.topic = req.body.topic;
+            discussion.comment = req.body.comment;
+            discussion.time = req.body.time;
+
+            discussion.save(function (err)
+            {
+                if (err) res.send(err);
+                else
+                {
+                    res.status(200).json({success: true, message:"Successfully saved the comment.", discussion: discussion});
+                }
+            })
+        }
+    })
+
+/*
 
 // movies routes
 router.route('/movies/:movieId')
@@ -222,11 +257,11 @@ router.route('/movies')
 
     .post(authJwtController.isAuthenticated, function(req,res)
     {
-        /*
+
         if (!req.body.title||!req.body.year_released||!req.body.genre) {
             res.json({success: false, message: 'Please enter ALL the necessary fields: title, year released, genre, actor name 1,' +
                     'character name 1, actor name 2, character name 2, actor name 3, character name 3.'});
-        }*/
+        }
 
             var movie = new Movie();
             movie.title = req.body.title;
@@ -252,7 +287,7 @@ router.route('/movies')
 
     });
 
-// reviews routes
+// discussion routes
 router.route('/reviews')
     .post(authJwtController.isAuthenticated, function(req,res) {
         if (!req.body.comment || !req.body.rating) {
@@ -347,7 +382,7 @@ router.route('/reviews')
             })
         }
     });
-
+*/
 
 app.use('/', router);
 app.listen(process.env.PORT || 8080);

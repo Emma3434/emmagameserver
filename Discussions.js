@@ -8,16 +8,13 @@ mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DB, { useNewUrlParser: true } );
 mongoose.set('useCreateIndex', true);
 
-// review schema
-var ReviewSchema = new Schema({
-    username: {type: String, required: true},
-    title: {type: String, required: true},
+// Discussion schema
+var DiscussionSchema = new Schema({
+    username: { type: String, required: true },
+    topic: { type: String, required: true },
     comment: { type: String, required: true },
-    rating: { type: Number, min:0, max:5, required: true }
+    time: { type: String, required: true }
 });
 
-
-
-
 // return the model
-module.exports = mongoose.model('Review', ReviewSchema);
+module.exports = mongoose.model('Discussion', DiscussionSchema);
