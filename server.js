@@ -143,10 +143,8 @@ router.route('/discussions/:topic')
         });
     })
 
-    /*
     .put(authJwtController.isAuthenticated, function (req, res){
-        var id = req.path.discussionID;
-        Discussion.findById(id, function(err, discussion){
+        Discussion.findOne({topic: req.params.topic}, function(err, discussion){
             if (err) res.send(err);
             var discussionJSON = JSON.stringify(discussion);
             discussion.save(function(err){
@@ -155,11 +153,11 @@ router.route('/discussions/:topic')
                 }
                 else
                 {
-                    res.json({success: true, message:"Successfully updated movie", discussion: discussion})
+                    res.json({success: true, message:"Successfully updated discussion", discussion: discussion})
                 }
             })
         })
-    })*/
+    })
 
 // discussions routes
 router.route('/discussions')
