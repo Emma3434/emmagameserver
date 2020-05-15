@@ -147,7 +147,7 @@ router.route('/discussions/:topic')
         Discussion.findOne({topic: req.params.topic}, function(err, discussion){
             if (err) res.send(err);
             var discussionJSON = JSON.stringify(discussion);
-            discussion.save(function(err){
+            discussion.update(function(err){
                 if(err){
                     return res.send(err);
                 }
