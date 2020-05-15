@@ -8,13 +8,13 @@ mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DB, { useNewUrlParser: true } );
 mongoose.set('useCreateIndex', true);
 
-// Discussion schema
-var DiscussionSchema = new Schema({
-    admin: { type: String, required: true },
-    topic: { type: String, required: true },
-    description: { type: String, required: true },
-    comments: { type: Array, items: {comment: Comment}}
+// Comment schema
+var CommentSchema = new Schema({
+    user: {type: String, required: true},
+    message: {type: String, required: true},
+    topic: {type: String, required: true},
+    time: {type: String, required: true}
 });
 
 // return the model
-module.exports = mongoose.model('Discussion', DiscussionSchema);
+module.exports = mongoose.model('Comment', CommentSchema);

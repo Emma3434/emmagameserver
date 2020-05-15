@@ -7,7 +7,7 @@ var jwt = require('jsonwebtoken');
 var cors = require('cors');
 
 var User = require('./Users');
-var Movie = require('./Movies');
+var Comment = require('./Comment');
 var Discussion = require('./Discussions');
 
 var app = express();
@@ -102,6 +102,39 @@ router.post('/signin', function(req, res) {
 // discussion routes
 router.route('/discussions')
     .post(authJwtController.isAuthenticated, function(req,res) {
+        if (!req.body.admin)
+        {
+            res.status(400).json({success: false, message: "Please login to create a discussion."})
+        }
+        else if (!req.body.topic)
+        {
+            res.status(400).json({success: false, message: "The topic of the discussion cannot be empty."})
+        }
+        else if (!req.body.description)
+        {
+            res.status(400).json({success: false, message: "The description of the discussion cannot be empty."})
+        }
+        else
+        {
+            var discussion = new Discussion();
+            discussion.admin = req.body.admin;
+            discussion.topic = req.body.topic;
+            discussion.description = req.body.description;
+
+            discussion.save(function (err)
+            {
+                if (err) res.send(err);
+                else
+                {
+                    res.status(200).json({success: true, message:"Successfully saved the discussion.", discussion: discussion});
+                }
+            })
+        }
+    })
+
+// comment routes
+router.route('/comment')
+    .post(authJwtController.isAuthenticated, function(req,res) {
         if (!req.body.username)
         {
             res.status(400).json({success: false, message: "Please login to join the discussion."})
@@ -116,18 +149,28 @@ router.route('/discussions')
         }
         else
         {
-            var discussion = new Discussion();
-            discussion.username = req.body.username;
-            discussion.topic = req.body.topic;
-            discussion.comment = req.body.comment;
-            discussion.time = req.body.time;
-
-            discussion.save(function (err)
-            {
+            Discussion.findOne({title: req.body.topic}).select('topic').exec(function(err, discussion){
                 if (err) res.send(err);
+
+                if (discussion){
+                    var comment = new Comment();
+                    comment.username = req.body.username;
+                    comment.message = req.body.comment;
+                    comment.topic = req.body.topic;
+                    comment.time = req.body.time;
+
+                    discussion.save(function (err)
+                    {
+                        if (err) res.send(err);
+                        else
+                        {
+                            res.status(200).json({success: true, message:"Successfully saved the comment.", comment: comment});
+                        }
+                    })
+                }
                 else
                 {
-                    res.status(200).json({success: true, message:"Successfully saved the comment.", discussion: discussion});
+                    res.status(400).json({success: false, message:"Cannot find this discussion."})
                 }
             })
         }
