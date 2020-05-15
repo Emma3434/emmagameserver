@@ -115,7 +115,7 @@ router.route('/discussions/:topic')
                     {
                         $match:
                             {
-                                title: req.params.topic
+                                topic: req.params.topic
                             }
                     },
                     {
