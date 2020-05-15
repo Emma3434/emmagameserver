@@ -1,1 +1,1 @@
-# emmagameserver
+# This is the server for ema game
