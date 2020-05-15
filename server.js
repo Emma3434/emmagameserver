@@ -113,6 +113,12 @@ router.route('/discussions/:discussionId')
             {
                 Discussion.aggregate([
                     {
+                        $match:
+                            {
+                                _id: req.params.discussionId
+                            }
+                    },
+                    {
                         $lookup: {
                             from: 'comments',
                             localField: 'topic',
@@ -136,6 +142,7 @@ router.route('/discussions/:discussionId')
             }
         });
     })
+
     /*
     .put(authJwtController.isAuthenticated, function (req, res){
         var id = req.path.discussionID;
@@ -156,6 +163,7 @@ router.route('/discussions/:discussionId')
 
 // discussions routes
 router.route('/discussions')
+
     .post(authJwtController.isAuthenticated, function(req,res) {
         if (!req.body.admin)
         {
