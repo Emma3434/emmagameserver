@@ -147,7 +147,7 @@ router.route('/discussions')
         Discussion.aggregate([
             {
                 $lookup: {
-                    from: 'comment',
+                    from: 'comments',
                     localField: 'topic',
                     foreignField: 'topic',
                     as: 'comments'
