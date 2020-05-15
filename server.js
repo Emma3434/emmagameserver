@@ -99,6 +99,7 @@ router.post('/signin', function(req, res) {
     });
 });
 
+/*
 // discussion routes
 router.route('/discussions')
     .post(authJwtController.isAuthenticated, function(req,res) {
@@ -132,7 +133,6 @@ router.route('/discussions')
         }
     })
 
-/*
 // comment routes
 router.route('/comment')
     .post(authJwtController.isAuthenticated, function(req,res) {
