@@ -10,7 +10,7 @@ mongoose.set('useCreateIndex', true);
 
 // Comment schema
 var CommentSchema = new Schema({
-    user: {type: String, required: true},
+    username: {type: String, required: true},
     message: {type: String, required: true},
     topic: {type: String, required: true},
     time: {type: String, required: true}
