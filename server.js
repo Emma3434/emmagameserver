@@ -104,6 +104,8 @@ router.post('/signin', function(req, res) {
 // discussion routes
 router.route('/discussions')
     .post(authJwtController.isAuthenticated, function(req,res) {
+        res.json({message:"ok"})
+        /*
         if (!req.body.admin)
         {
             res.status(400).json({success: false, message: "Please login to create a discussion."})
@@ -131,7 +133,7 @@ router.route('/discussions')
                     res.status(200).json({success: true, message:"Successfully saved the discussion.", discussion: discussion});
                 }
             })
-        }
+        }*/
     })
 
 /*
