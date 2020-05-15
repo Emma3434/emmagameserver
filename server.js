@@ -8,7 +8,7 @@ var cors = require('cors');
 
 var User = require('./Users');
 
-//var Comment = require('./Comment');
+var Comment = require('./Comment');
 var Discussion = require('./Discussions');
 
 var app = express();
@@ -65,7 +65,7 @@ router.post('/signup', function(req, res) {
         user.save(function(err) {
             if (err) {
                 // duplicate entry
-                if (err.code == 11000)
+                if (err.code === 11000)
                     return res.json({ success: false, message: 'A user with that username already exists. '});
                 else
                     return res.send(err);
@@ -146,7 +146,6 @@ router.route('/discussions')
         }
     })
 
-/*
 // comment routes
 router.route('/comment')
     .post(authJwtController.isAuthenticated, function(req,res) {
@@ -190,7 +189,7 @@ router.route('/comment')
             })
         }
     })
-*/
+
 
 /*
 
