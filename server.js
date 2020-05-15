@@ -118,6 +118,8 @@ router.route('/discussions')
         }
         else
         {
+
+
             var discussion = new Discussion();
             discussion.admin = req.body.admin;
             discussion.topic = req.body.topic;
@@ -125,7 +127,17 @@ router.route('/discussions')
 
             discussion.save(function (err)
             {
-                if (err) res.send(err);
+                if (err)
+                {
+                    if (err.code === 11000)
+                    {
+                        return res.status(400).json({success: false, message: "A discussion with that topic already exists."})
+                    }
+                    else
+                    {
+                        return res.send(err)
+                    }
+                }
                 else
                 {
                     res.status(200).json({success: true, message:"Successfully saved the discussion.", discussion: discussion});
