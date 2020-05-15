@@ -7,9 +7,8 @@ var jwt = require('jsonwebtoken');
 var cors = require('cors');
 
 var User = require('./Users');
-/*
 var Comment = require('./Comment');
-var Discussion = require('./Discussions');*/
+var Discussion = require('./Discussions');
 
 var app = express();
 module.exports = app; // for testing
