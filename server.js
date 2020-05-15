@@ -103,8 +103,7 @@ router.post('/signin', function(req, res) {
 // discussion (single) routes
 router.route('/discussions/:discussionId')
     .get(authJwtController.isAuthenticated, function (req, res) {
-        var id = req.params.discussionId;
-        Discussion.findById(id, function(err, discussion) {
+        Discussion.findById({_id: req.params.discussionId}, function(err, discussion) {
             if (err) res.send(err);
             if (!discussion)
             {
@@ -131,15 +130,15 @@ router.route('/discussions/:discussionId')
                     }
                 ]).exec(function (err, disscussionIdReview) {
                     if (err) res.send(err);
-                    res.status(200).json({success: true, id: disscussionId, discussion: disscussionIdReview});
+                    res.status(200).json({success: true, id: req.params.discussionId, discussion: disscussionIdReview});
                 })
 
             }
         });
     })
-
+    /*
     .put(authJwtController.isAuthenticated, function (req, res){
-        var id = req.params.discussionID;
+        var id = req.path.discussionID;
         Discussion.findById(id, function(err, discussion){
             if (err) res.send(err);
             var discussionJSON = JSON.stringify(discussion);
@@ -153,7 +152,7 @@ router.route('/discussions/:discussionId')
                 }
             })
         })
-    })
+    })*/
 
 // discussions routes
 router.route('/discussions')
