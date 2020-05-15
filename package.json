@@ -1,6 +1,7 @@
 {
   "name": "Emma-Game-server",
   "version": "1.0.0",
+  "main": "server.js",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.19.0",
