@@ -163,7 +163,7 @@ router.route('/comment')
         }
         else
         {
-            Discussion.findOne({title: req.body.topic}).select('topic').exec(function(err, discussion){
+            Discussion.findOne({topic: req.body.topic}).select('topic').exec(function(err, discussion){
                 if (err) res.send(err);
 
                 if (discussion){
