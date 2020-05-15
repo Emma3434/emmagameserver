@@ -7,10 +7,10 @@ var jwt = require('jsonwebtoken');
 var cors = require('cors');
 
 var User = require('./Users');
-/*
-var Comment = require('./Comment');
+
+//var Comment = require('./Comment');
 var Discussion = require('./Discussions');
-*/
+
 var app = express();
 module.exports = app; // for testing
 app.use(cors());
@@ -100,7 +100,7 @@ router.post('/signin', function(req, res) {
     });
 });
 
-/*
+
 // discussion routes
 router.route('/discussions')
     .post(authJwtController.isAuthenticated, function(req,res) {
@@ -134,6 +134,7 @@ router.route('/discussions')
         }
     })
 
+/*
 // comment routes
 router.route('/comment')
     .post(authJwtController.isAuthenticated, function(req,res) {
