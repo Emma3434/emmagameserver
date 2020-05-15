@@ -132,6 +132,7 @@ router.route('/discussions')
         }
     })
 
+/*
 // comment routes
 router.route('/comment')
     .post(authJwtController.isAuthenticated, function(req,res) {
@@ -175,6 +176,7 @@ router.route('/comment')
             })
         }
     })
+*/
 
 /*
 
