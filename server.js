@@ -103,7 +103,7 @@ router.post('/signin', function(req, res) {
 // discussion (single) routes
 router.route('/discussions/:discussionId')
     .get(authJwtController.isAuthenticated, function (req, res) {
-        Discussion.findById({id: req.params.discussionId}, function(err, discussion) {
+        Discussion.findById({_id: req.params.discussionId}, function(err, discussion) {
             if (err) res.send(err);
             if (!discussion)
             {
