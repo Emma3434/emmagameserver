@@ -11,7 +11,7 @@ mongoose.set('useCreateIndex', true);
 // Discussion schema
 var DiscussionSchema = new Schema({
     admin: { type: String, required: true },
-    topic: { type: String, required: true },
+    topic: { type: String, required: true, index: {unique: true}},
     description: { type: String, required: true },
     //comments: { type: Array, items: {comment: Comment}}
     comments: { type: Array }
