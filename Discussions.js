@@ -10,7 +10,7 @@ mongoose.set('useCreateIndex', true);
 
 // Discussion schema
 var DiscussionSchema = new Schema({
-    administration: { type: String, required: true },
+    admin: { type: String, required: true },
     topic: { type: String, required: true },
     description: { type: String, required: true },
     //comments: { type: Array, items: {comment: Comment}}
