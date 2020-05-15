@@ -7,8 +7,8 @@ var jwt = require('jsonwebtoken');
 var cors = require('cors');
 
 var User = require('./Users');
-//var Movie = require('./Movies');
-//var Review = require('./Reviews');
+var Movie = require('./Movies');
+var Review = require('./Reviews');
 
 
 var app = express();
@@ -100,7 +100,6 @@ router.post('/signin', function(req, res) {
     });
 });
 
-/*
 // movies routes
 router.route('/movies/:movieId')
     .get(authJwtController.isAuthenticated, function (req, res) {
@@ -223,33 +222,33 @@ router.route('/movies')
 
     .post(authJwtController.isAuthenticated, function(req,res)
     {
-
+        /*
         if (!req.body.title||!req.body.year_released||!req.body.genre) {
             res.json({success: false, message: 'Please enter ALL the necessary fields: title, year released, genre, actor name 1,' +
                     'character name 1, actor name 2, character name 2, actor name 3, character name 3.'});
-        }
+        }*/
 
-        var movie = new Movie();
-        movie.title = req.body.title;
-        movie.year_released = req.body.year_released;
-        movie.genre = req.body.genre;
-        movie.actors = req.body.actors;
-        movie.imageUrl = req.body.imageUrl;
+            var movie = new Movie();
+            movie.title = req.body.title;
+            movie.year_released = req.body.year_released;
+            movie.genre = req.body.genre;
+            movie.actors = req.body.actors;
+            movie.imageUrl = req.body.imageUrl;
 
-        // save the movie
-        movie.save(function(err) {
-            if (err) {
-                // duplicate entry
-                if (err.code == 11000)
-                    return res.json({ success: false, message: 'A movie with that title already exists. '});
+            // save the movie
+            movie.save(function(err) {
+                if (err) {
+                    // duplicate entry
+                    if (err.code == 11000)
+                        return res.json({ success: false, message: 'A movie with that title already exists. '});
+                    else
+                        return res.send(err);
+                }
                 else
-                    return res.send(err);
-            }
-            else
-            {
-                res.json({ success: true, message: 'Movie created!', movie: movie });
-            }
-        });
+                {
+                    res.json({ success: true, message: 'Movie created!', movie: movie });
+                }
+            });
 
     });
 
@@ -348,7 +347,7 @@ router.route('/reviews')
             })
         }
     });
-*/
+
 
 app.use('/', router);
 app.listen(process.env.PORT || 8080);

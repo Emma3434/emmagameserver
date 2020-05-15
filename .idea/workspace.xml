@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b47dc7b6-b61b-447c-81ca-82345a6356be" name="Default Changelist" comment="">
+    <list default="true" id="d9ee19f9-cc16-478b-9ef6-92d5d45bbb3c" name="Default" comment="redme">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -13,20 +13,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="package.json" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="JsFlowSettings">
-    <service-enabled>true</service-enabled>
-    <exe-path />
-    <other-services-enabled>true</other-services-enabled>
-    <auto-save>true</auto-save>
-  </component>
-  <component name="ProjectId" id="1bvWgdIIKcmwOTryiTliyy61blw" />
+  <component name="ProjectId" id="1YgXQaZjJ4NS3FDzgrCzkjn1uKY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -34,43 +27,168 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="D:/大学/大四下/CSCI 3916-001 Web API/Homework/Homework 4/CSC_3916HW4" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.14.1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="/usr/local/bin/node" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+  </component>
+  <component name="RecentsManager">
+    <key name="OPEN_URL_DIALOG">
+      <recent name="http://www.ucdenver.edu/pages/ucdwelcomepage.aspx" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\大学\大四下\CSCI 3916-001 Web API\Homework\Homework 4\CSC_3916HW4" />
+      <recent name="D:\大学\大四下\CSCI 3916-001 Web API\Homework\Homework 3\CSC3916_HW3" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Node.js.server.js">
+    <configuration name="server.js" type="NodeJSConfigurationType" temporary="true" node-parameters="-r dotenv/config" path-to-js-file="server.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Node.js.server.js" />
+      <item itemvalue="npm.test" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.server.js" />
+        <item itemvalue="npm.test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b47dc7b6-b61b-447c-81ca-82345a6356be" name="Default Changelist" comment="" />
-      <created>1589513159759</created>
+      <changelist id="d9ee19f9-cc16-478b-9ef6-92d5d45bbb3c" name="Default" comment="" />
+      <created>1517680644681</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1589513159759</updated>
-      <workItem from="1589513165509" duration="3692000" />
-      <workItem from="1589518852728" duration="222000" />
+      <updated>1517680644681</updated>
+      <workItem from="1517680647269" duration="12385000" />
+      <workItem from="1519076514854" duration="3281000" />
+      <workItem from="1519100227121" duration="592000" />
+      <workItem from="1520305657875" duration="2469000" />
+      <workItem from="1520308174902" duration="3305000" />
+      <workItem from="1551740823482" duration="7355000" />
+      <workItem from="1552144308160" duration="1000" />
+      <workItem from="1583365197285" duration="2397000" />
+      <workItem from="1586049292126" duration="3422000" />
+      <workItem from="1586064759406" duration="2035000" />
+      <workItem from="1586126341895" duration="3117000" />
+      <workItem from="1586192217619" duration="407000" />
+      <workItem from="1586558974734" duration="5382000" />
+      <workItem from="1586925428820" duration="10276000" />
+      <workItem from="1587166621453" duration="53000" />
+      <workItem from="1588175511459" duration="1232000" />
+      <workItem from="1588224539532" duration="3408000" />
+      <workItem from="1588358226602" duration="2464000" />
+      <workItem from="1588380622843" duration="620000" />
+      <workItem from="1588493486772" duration="627000" />
+      <workItem from="1588804254972" duration="21000" />
+      <workItem from="1589513240538" duration="3399000" />
     </task>
+    <task id="LOCAL-00001" summary="redme">
+      <created>1586192570230</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1586192570230</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="redme" />
+    <option name="LAST_COMMIT_MESSAGE" value="redme" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1589513236897">
+    <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585866284387">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1589513236897" />
-    <state x="0" y="0" key="SettingsEditor" timestamp="1589519074101">
+    <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1585866284387" />
+    <state x="207" y="0" key="CommitChangelistDialog2" timestamp="1586560112259">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="0" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1589519074101" />
+    <state x="207" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1586560112259" />
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1589518850150">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1589518850150" />
+    <state width="1260" height="65" key="GridCell.Tab.0.bottom" timestamp="1587006652594">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1260" height="65" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1587006652594" />
+    <state width="1259" height="223" key="GridCell.Tab.0.bottom/0.23.1280.777@0.23.1280.777" timestamp="1583367584852" />
+    <state width="1659" height="230" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1583365605028" />
+    <state width="1260" height="65" key="GridCell.Tab.0.center" timestamp="1587006652594">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1260" height="65" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1587006652594" />
+    <state width="1259" height="223" key="GridCell.Tab.0.center/0.23.1280.777@0.23.1280.777" timestamp="1583367584851" />
+    <state width="1659" height="230" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1583365605027" />
+    <state width="1260" height="65" key="GridCell.Tab.0.left" timestamp="1587006652594">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1260" height="65" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1587006652594" />
+    <state width="1259" height="223" key="GridCell.Tab.0.left/0.23.1280.777@0.23.1280.777" timestamp="1583367584851" />
+    <state width="1659" height="230" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1583365605026" />
+    <state width="1260" height="65" key="GridCell.Tab.0.right" timestamp="1587006652594">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1260" height="65" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1587006652594" />
+    <state width="1259" height="223" key="GridCell.Tab.0.right/0.23.1280.777@0.23.1280.777" timestamp="1583367584852" />
+    <state width="1659" height="230" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1583365605027" />
+    <state x="625" y="2" width="672" height="678" key="search.everywhere.popup" timestamp="1588352983253">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="625" y="2" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1588352983253" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/server.js</url>
+          <line>235</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
