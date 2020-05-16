@@ -99,7 +99,11 @@ router.post('/signin', function(req, res) {
 
     });
 });
-
+// random test
+router.route('/random')
+    .get(authJwtController.isAuthenticated, function (req, res){
+    res.status(200).json(success: true, message: "You are logged in!");
+})
 // discussion (single) routes
 router.route('/discussions/:discussionId')
     .get(authJwtController.isAuthenticated, function (req, res) {
