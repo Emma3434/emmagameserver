@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b47dc7b6-b61b-447c-81ca-82345a6356be" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/users.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,10 +35,11 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="12.14.1" />
-    <property name="last_opened_file_path" value="D:/大学/大四下/CSCI 3916-001 Web API/Homework/Homework 4/CSC_3916HW4" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -99,7 +102,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d9ee19f9-cc16-478b-9ef6-92d5d45bbb3c" name="Default" comment="" />
+      <changelist id="b47dc7b6-b61b-447c-81ca-82345a6356be" name="Default Changelist" comment="" />
       <created>1517680644681</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -126,6 +129,9 @@
       <workItem from="1588493486772" duration="627000" />
       <workItem from="1588804254972" duration="21000" />
       <workItem from="1589513240538" duration="3399000" />
+      <workItem from="1589596210878" duration="95000" />
+      <workItem from="1589601416506" duration="1408000" />
+      <workItem from="1589613259413" duration="641000" />
     </task>
     <task id="LOCAL-00001" summary="redme">
       <created>1586192570230</created>
@@ -191,7 +197,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/server.js</url>
-          <line>433</line>
+          <line>434</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>

@@ -101,9 +101,9 @@ router.post('/signin', function(req, res) {
 });
 
 // discussion (single) routes
-router.route('/discussions/:topic')
+router.route('/discussions/:discussionId')
     .get(authJwtController.isAuthenticated, function (req, res) {
-        Discussion.findOne({topic: req.params.topic}, function(err, discussion) {
+        Discussion.findById({topic: req.params.topic}, function(err, discussion) {
             if (err) res.send(err);
             if (!discussion)
             {
@@ -115,7 +115,7 @@ router.route('/discussions/:topic')
                     {
                         $match:
                             {
-                                topic: req.params.topic
+                                id: req.params.discussionId
                             }
                     },
                     {
@@ -142,7 +142,7 @@ router.route('/discussions/:topic')
             }
         });
     })
-
+/*
     .put(authJwtController.isAuthenticated, function (req, res){
         Discussion.findOne({topic: req.params.topic}, function(err, discussion){
             if (err) res.send(err);
@@ -157,7 +157,8 @@ router.route('/discussions/:topic')
                 }
             })
         })
-    })
+    })*/
+
 
 // discussions routes
 router.route('/discussions')
