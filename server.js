@@ -85,7 +85,7 @@ router.post('/signin', function(req, res) {
         if (err) res.send(err);
         if (!user)
         {
-            res.status(400).json({success: false, message: 'There is no such user.'})
+            res.status(400).json({success: false, message: 'Cannot find such user.'})
         }
         else
         {
