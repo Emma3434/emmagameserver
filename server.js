@@ -64,7 +64,6 @@ router.post('/signup', function(req, res) {
         user.save(function(err) {
             if (err) {
                 // duplicate entry
-
                 if (err.code == 11000)
                     return res.json({ success: false, message: 'A user with that username already exists. '});
                 else
@@ -84,19 +83,19 @@ router.post('/signin', function(req, res) {
 
     User.findOne({ username: userNew.username }).select('name username password').exec(function(err, user) {
         if (err) res.send(err);
-
-        user.comparePassword(userNew.password, function(isMatch){
-            if (isMatch) {
-                var userToken = {id: user._id, username: user.username};
-                var token = jwt.sign(userToken, process.env.SECRET_KEY);
-                res.json({success: true, username: user.username, token: 'JWT ' + token});
-            }
-            else {
-                res.status(401).send({success: false, message: 'Authentication failed.'});
-            }
-        });
-
-
+        else if (user)
+        {
+            user.comparePassword(userNew.password, function(isMatch){
+                if (isMatch) {
+                    var userToken = {id: user._id, username: user.username};
+                    var token = jwt.sign(userToken, process.env.SECRET_KEY);
+                    res.json({success: true, username: user.username, token: 'JWT ' + token});
+                }
+                else {
+                    res.status(401).send({success: false, message: 'Authentication failed.'});
+                }
+            });
+        }
     });
 });
 // random test
