@@ -83,7 +83,11 @@ router.post('/signin', function(req, res) {
 
     User.findOne({ username: userNew.username }).select('name username password').exec(function(err, user) {
         if (err) res.send(err);
-        else if (user)
+        if (!user)
+        {
+            res.status(400).json({success: false, message: 'There is no such user.'})
+        }
+        else
         {
             user.comparePassword(userNew.password, function(isMatch){
                 if (isMatch) {
