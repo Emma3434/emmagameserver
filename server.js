@@ -93,10 +93,10 @@ router.post('/signin', function(req, res) {
                 if (isMatch) {
                     var userToken = {id: user._id, username: user.username};
                     var token = jwt.sign(userToken, process.env.SECRET_KEY);
-                    return res.status(200).json({success: true, username: user.username, token: 'JWT ' + token});
+                    res.status(200).send({success: true, username: user.username, token: 'JWT ' + token});
                 }
                 else {
-                    return res.status(401).send({success: false, message: 'Authentication failed.'});
+                    res.status(401).send({success: false, message: 'Authentication failed.'});
                 }
             });
         }
