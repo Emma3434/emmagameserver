@@ -81,7 +81,7 @@ router.post('/signin', function(req, res) {
     userNew.username = req.body.username;
     userNew.password = req.body.password;
 
-    User.findOne({ username: userNew.username }).select('name username password').exec(function(err, user) {
+    User.findOne({ username: userNew.username }).select('username password').exec(function(err, user) {
         if (err) res.send(err);
         if (!user)
         {
