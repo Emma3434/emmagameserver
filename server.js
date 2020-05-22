@@ -272,12 +272,31 @@ router.route('/comment')
         }
         else
         {
-            Discussion.findOne({topic: req.body.topic}).select('topic').exec(function(err, discussion){
-                if (err) res.send(err);
-
-                if (discussion){
-                    res.status(200).json({success: true, discussion: discussion});
+            Discussion.aggregate([
+                {
+                    $lookup: {
+                        from: 'comments',
+                        localField: 'topic',
+                        foreignField: 'topic',
+                        as: 'comments'
+                    }
+                },
+                {
+                    $project: {
+                        topic: 1,
+                        description: 2,
+                        admin: 3,
+                        comments: '$comments'
+                    }
+                },
+                {
+                    $match: {
+                        topic: req.body.topic
+                    }
                 }
+            ]).exec(function (err, discussion) {
+                if (err) res.send(err);
+                res.status(200).json({success: true, discussion: discussion});
             })
         }
     }
