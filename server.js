@@ -263,7 +263,7 @@ router.route('/discussions')
 // comment routes
 router.route('/comment')
     .get(authJwtController.isAuthenticated, function(req,res) {
-        if (!req.param.topic)
+        if (!req.params.topic)
         {
             res.status(400).json({success: false, message: "Please pass the discussion topic."})
         }
@@ -288,7 +288,7 @@ router.route('/comment')
                 },
                 {
                     $match: {
-                        topic: req.body.topic
+                        topic: req.params.topic
                     }
                 }
             ]).exec(function (err, discussion) {
