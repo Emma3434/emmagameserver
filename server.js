@@ -299,7 +299,8 @@ router.route('/comment')
                 res.status(200).json({success: true, discussion: discussion});
             })
         }
-    }
+    })
+
     .post(authJwtController.isAuthenticated, function(req,res) {
         if (!req.body.username)
         {
