@@ -263,39 +263,32 @@ router.route('/discussions')
 // comment routes
 router.route('/comment')
     .get(authJwtController.isAuthenticated, function(req,res) {
-        if (!req.params.topic)
-        {
-            res.status(400).json({success: false, message: "Please pass the discussion topic."})
-        }
-        else
-        {
-            Discussion.aggregate([
-                {
-                    $lookup: {
-                        from: 'comments',
-                        localField: 'topic',
-                        foreignField: 'topic',
-                        as: 'comments'
-                    }
-                },
-                {
-                    $project: {
-                        topic: 1,
-                        description: 2,
-                        admin: 3,
-                        comments: '$comments'
-                    }
-                },
-                {
-                    $match: {
-                        topic: req.params.topic
-                    }
+        Discussion.aggregate([
+            {
+                $lookup: {
+                    from: 'comments',
+                    localField: 'topic',
+                    foreignField: 'topic',
+                    as: 'comments'
                 }
-            ]).exec(function (err, discussion) {
-                if (err) res.send(err);
-                res.status(200).json({success: true, discussion: discussion});
-            })
-        }
+            },
+            {
+                $project: {
+                    topic: 1,
+                    description: 2,
+                    admin: 3,
+                    comments: '$comments'
+                }
+            },
+            {
+                $match: {
+                    topic: req.params.topic
+                }
+            }
+        ]).exec(function (err, discussion) {
+            if (err) res.send(err);
+            res.status(200).json({success: true, discussion: discussion});
+        })
     })
 
     .post(authJwtController.isAuthenticated, function(req,res) {
