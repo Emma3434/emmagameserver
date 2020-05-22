@@ -240,6 +240,7 @@ router.route('/discussions')
             res.status(200).json({success: true, discussion: discussion});
         })
     })
+
     .delete(authJwtController.isAuthenticated, function(req,res)
     {
         Discussion.deleteOne({topic: req.body.topic}, function (err, discussion){
@@ -262,11 +263,7 @@ router.route('/discussions')
 // comment routes
 router.route('/comment')
     .get(authJwtController.isAuthenticated, function(req,res) {
-        if (!req.body.username)
-        {
-            res.status(400).json({success: false, message: "Please login to join the discussion."})
-        }
-        else if (!req.body.topic)
+        if (!req.param.topic)
         {
             res.status(400).json({success: false, message: "Please pass the discussion topic."})
         }
