@@ -117,12 +117,6 @@ router.route('/discussions/:discussionId')
             {
                 Discussion.aggregate([
                     {
-                        $match:
-                            {
-                                id: req.params.discussionId
-                            }
-                    },
-                    {
                         $lookup: {
                             from: 'comments',
                             localField: 'topic',
