@@ -261,6 +261,26 @@ router.route('/discussions')
 
 // comment routes
 router.route('/comment')
+    .get(authJwtController.isAuthenticated, function(req,res) {
+        if (!req.body.username)
+        {
+            res.status(400).json({success: false, message: "Please login to join the discussion."})
+        }
+        else if (!req.body.topic)
+        {
+            res.status(400).json({success: false, message: "Please pass the discussion topic."})
+        }
+        else
+        {
+            Discussion.findOne({topic: req.body.topic}).select('topic').exec(function(err, discussion){
+                if (err) res.send(err);
+
+                if (discussion){
+                    res.status(200).json({success: true, discussion: discussion});
+                }
+            })
+        }
+    }
     .post(authJwtController.isAuthenticated, function(req,res) {
         if (!req.body.username)
         {
@@ -301,7 +321,7 @@ router.route('/comment')
                 }
             })
         }
-    })
+    });
 
 
 /*
