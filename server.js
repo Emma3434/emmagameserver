@@ -107,43 +107,43 @@ router.post('/signin', function(req, res) {
 router.route('/discussions/:discussionId')
     .get(authJwtController.isAuthenticated, function (req, res) {
         var id = req.params.discussionId;
-        Discussion.aggregate([
-            {
-                $lookup: {
-                    from: 'comments',
-                    localField: 'topic',
-                    foreignField: 'topic',
-                    as: 'comments'
-                }
-            },
-            {
-                $match: {
-                    _id: id
-                }
-            },
-            {
-                $project: {
-                    topic: 1,
-                    description: 2,
-                    admin: 3,
-                    comments: '$comments'
-                }
-            }
-        ]).exec(function (err, disscussionIdReview) {
+        Discussion.findById(id, function(err, discussion) {
             if (err) res.send(err);
-            Discussion.findById(id, function(err, discussion) {
-                if (err) res.send(err);
-                if (!discussion)
-                {
-                    res.status(400).json({success: false, message:"Cannot find the discussion."});
-                }
-                else
-                {
-                    res.status(200).json({success:true, id: id, discussion: discussion});
+            if (!discussion)
+            {
+                res.status(400).json({success: false, message:"Cannot find the discussion."});
+            }
+            else
+            {
+                Discussion.aggregate([
+                    {
+                        $lookup: {
+                            from: 'comments',
+                            localField: 'topic',
+                            foreignField: 'topic',
+                            as: 'comments'
+                        }
+                    },
+                    {
+                        $match: {
+                            _id: ObjectId(id)
+                        }
+                    },
+                    {
+                        $project: {
+                            topic: 1,
+                            description: 2,
+                            admin: 3,
+                            comments: '$comments'
+                        }
+                    }
+                ]).exec(function (err, disscussionIdReview) {
+                    if (err) res.send(err);
+                    res.status(200).json({success:true, id: id, discussion: disscussionIdReview});
+                })
+            }
+        });
 
-                }
-            });
-        })
 
     })
 /*
