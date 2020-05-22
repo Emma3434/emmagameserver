@@ -125,6 +125,11 @@ router.route('/discussions/:discussionId')
                         }
                     },
                     {
+                        $match: {
+                            _id: id
+                        }
+                    },
+                    {
                         $project: {
                             topic: 1,
                             description: 2,
