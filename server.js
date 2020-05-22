@@ -131,7 +131,7 @@ router.route('/discussions/:discussionId')
             }
         ]).exec(function (err, disscussionIdReview) {
             if (err) res.send(err);
-            disscussionIdReview.findById(id, function(err, discussion) {
+            Discussion.findById(id, function(err, discussion) {
                 if (err) res.send(err);
                 if (!discussion)
                 {
