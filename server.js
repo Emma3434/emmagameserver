@@ -102,15 +102,12 @@ router.post('/signin', function(req, res) {
         }
     });
 });
-// random test
-router.route('/random')
-    .get(authJwtController.isAuthenticated, function (req, res){
-        res.status(200).json({success: true, message: "You are logged in!"})
-    });
+
 // discussion (single) routes
 router.route('/discussions/:discussionId')
     .get(authJwtController.isAuthenticated, function (req, res) {
-        Discussion.findById({topic: req.params.topic}, function(err, discussion) {
+        var id = req.params.discussionId;
+        Discussion.findById(id, function(err, discussion) {
             if (err) res.send(err);
             if (!discussion)
             {
@@ -262,6 +259,7 @@ router.route('/discussions')
 
 // comment routes
 router.route('/comment')
+    /*
     .get(authJwtController.isAuthenticated, function(req,res) {
         Discussion.aggregate([
             {
@@ -290,6 +288,8 @@ router.route('/comment')
             res.status(200).json({success: true, discussion: discussion});
         })
     })
+
+     */
 
     .post(authJwtController.isAuthenticated, function(req,res) {
         if (!req.body.username)
