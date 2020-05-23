@@ -72,8 +72,10 @@ router.post('/signup', function(req, res) {
                 else
                     return res.send(err);
             }
+            var userToken = {id: user._id, username: user.username};
+            var token = jwt.sign(userToken, process.env.SECRET_KEY);
 
-            res.status(200).json({ success: true, message: 'User created!' });
+            res.status(200).json({ success: true, message: 'User created!', username: user.username, token: 'JWT ' + token});
         });
     }
 });
