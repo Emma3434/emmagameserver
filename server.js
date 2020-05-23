@@ -262,78 +262,32 @@ router.route('/discussions')
 
 // comment routes
 router.route('/comment')
-    /*
-    .get(authJwtController.isAuthenticated, function(req,res) {
-        Discussion.aggregate([
-            {
-                $lookup: {
-                    from: 'comments',
-                    localField: 'topic',
-                    foreignField: 'topic',
-                    as: 'comments'
-                }
-            },
-            {
-                $project: {
-                    topic: 1,
-                    description: 2,
-                    admin: 3,
-                    comments: '$comments'
-                }
-            },
-            {
-                $match: {
-                    topic: req.params.topic
-                }
-            }
-        ]).exec(function (err, discussion) {
-            if (err) res.send(err);
-            res.status(200).json({success: true, discussion: discussion});
-        })
-    })
-
-     */
-
     .post(authJwtController.isAuthenticated, function(req,res) {
-        if (!req.body.username)
-        {
-            res.status(400).json({success: false, message: "Please login to join the discussion."})
-        }
-        else if (!req.body.topic)
-        {
-            res.status(400).json({success: false, message: "Please choose the topic you want to discuss."})
-        }
-        else if (!req.body.message)
-        {
-            res.status(400).json({success: false, message: "The comment cannot be empty."})
-        }
-        else
-        {
-            Discussion.findOne({topic: req.body.topic}).select('topic').exec(function(err, discussion){
-                if (err) res.send(err);
+        Discussion.findOne({topic: req.body.topic}).select('topic').exec(function(err, discussion){
+            if (err) res.send(err);
 
-                if (discussion){
-                    var comment = new Comment();
-                    comment.username = req.body.username;
-                    comment.message = req.body.message;
-                    comment.topic = req.body.topic;
-                    comment.time = req.body.time;
+            if (discussion){
+                var comment = new Comment();
+                comment.username = req.body.username;
+                comment.message = req.body.message;
+                comment.topic = req.body.topic;
+                comment.time = req.body.time;
 
-                    comment.save(function (err)
-                    {
-                        if (err) res.send(err);
-                        else
-                        {
-                            res.status(200).json({success: true, message:"Successfully saved the comment.", comment: comment});
-                        }
-                    })
-                }
-                else
+                comment.save(function (err)
                 {
-                    res.status(400).json({success: false, message:"Cannot find this discussion."})
-                }
-            })
-        }
+                    if (err) res.send(err);
+                    else
+                    {
+                        res.status(200).json({success: true, message:"Successfully saved the comment.", comment: comment});
+                    }
+                })
+            }
+            else
+            {
+                res.status(400).json({success: false, message:"Cannot find this discussion."})
+            }
+        })
+
     });
 
 
