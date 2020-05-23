@@ -19,7 +19,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 var router = express.Router();
 
-const ObjectId = mongoose.Types.ObjectId;
+var mongoose = require('mongoose');
+var ObjectId = mongoose.Types.ObjectId;
 
 router.route('/postjwt')
     .post(authJwtController.isAuthenticated, function (req, res) {
