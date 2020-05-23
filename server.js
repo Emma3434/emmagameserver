@@ -271,7 +271,7 @@ router.route('/comment')
 
         Discussion.findOne({topic: req.body.topic}).select('topic').exec(function(err, discussion){
             if (err) res.send(err);
-            if (discussion){
+            if (!discussion){
                 res.status(400).json({success: false, message:"Cannot find this discussion."})
             }
             else
