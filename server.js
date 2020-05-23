@@ -263,16 +263,19 @@ router.route('/discussions')
 // comment routes
 router.route('/comment')
     .post(authJwtController.isAuthenticated, function(req,res) {
+        var comment = new Comment();
+        comment.username = req.body.username;
+        comment.message = req.body.message;
+        comment.topic = req.body.topic;
+        comment.time = req.body.time;
+
         Discussion.findOne({topic: req.body.topic}).select('topic').exec(function(err, discussion){
             if (err) res.send(err);
-
             if (discussion){
-                var comment = new Comment();
-                comment.username = req.body.username;
-                comment.message = req.body.message;
-                comment.topic = req.body.topic;
-                comment.time = req.body.time;
-
+                res.status(400).json({success: false, message:"Cannot find this discussion."})
+            }
+            else
+            {
                 comment.save(function (err)
                 {
                     if (err) res.send(err);
@@ -281,10 +284,6 @@ router.route('/comment')
                         res.status(200).json({success: true, message:"Successfully saved the comment.", comment: comment});
                     }
                 })
-            }
-            else
-            {
-                res.status(400).json({success: false, message:"Cannot find this discussion."})
             }
         })
 
